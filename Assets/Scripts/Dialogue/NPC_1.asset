@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91470534634bba94eafd51d5cc26c5e7, type: 3}
+  m_Name: NPC_1
+  m_EditorClassIdentifier: 
+  actor: {fileID: 6301854539151227261, guid: c404da7f5c0c2bf468acfb008843b253, type: 3}
+  spaekerSprite: {fileID: 0}
+  sentence: 
+  dialogues:
+  - actorName: Player
+    profile: {fileID: 21300000, guid: f03a32d6d56088c40827173b2cfc8356, type: 3}
+    sentece:
+      portuguese: salve, tropa
+      english: save, gang
+  - actorName: Chapa
+    profile: {fileID: 2032000807, guid: 674aa7c665b5af3489a251fa241758e1, type: 3}
+    sentece:
+      portuguese: tudo bem?
+      english: how are you?
+  - actorName: Player
+    profile: {fileID: 0}
+    sentece:
+      portuguese: "n\xE3o te interessa!!"
+      english: there is none of your business
