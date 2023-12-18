@@ -1,11 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.UI;  //trabalha com Canvas
 
 public class DialogueManager : MonoBehaviour  //Classe responsável por pegar as falas e colocar na cena
 {
+    [System.Serializable]
+    public enum idiom
+    {
+        pt,
+        eng
+    }
+
+    public idiom language;
+
+
     [Header("Components")]
     public GameObject dialogueObj;  //Janela do diálogo
     public Image profileSprite;  //Referencia a imagem de perfil do personagem que está falando
@@ -68,7 +79,8 @@ public class DialogueManager : MonoBehaviour  //Classe responsável por pegar as
                 speechText.text = "";
                 index = 0;
                 dialogueObj.SetActive(false);
-                senteces = null;
+                senteces = null;  //Zera as falas
+                isShowing = false; 
             }
         }
     }

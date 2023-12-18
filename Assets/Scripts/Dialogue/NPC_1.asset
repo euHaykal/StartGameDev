@@ -16,17 +16,17 @@ MonoBehaviour:
   spaekerSprite: {fileID: 0}
   sentence: 
   dialogues:
-  - actorName: Player
-    profile: {fileID: 21300000, guid: f03a32d6d56088c40827173b2cfc8356, type: 3}
+  - actorName: 
+    profile: {fileID: 0}
     sentece:
       portuguese: salve, tropa
       english: save, gang
-  - actorName: Chapa
-    profile: {fileID: 2032000807, guid: 674aa7c665b5af3489a251fa241758e1, type: 3}
+  - actorName: 
+    profile: {fileID: 0}
     sentece:
       portuguese: tudo bem?
       english: how are you?
-  - actorName: Player
+  - actorName: 
     profile: {fileID: 0}
     sentece:
       portuguese: "n\xE3o te interessa!!"

@@ -33,7 +33,16 @@ public class NPC_Dialogue : MonoBehaviour
     {
         for(int i = 0; i < dialogue.dialogues.Count; i++)  //Está checando a quantidade de falas presente na lista criada no DialogueManager
         {
-            sentences.Add(dialogue.dialogues[i].sentece.portuguese);  //Adiciona uma nova sentença ao Arrey de falas(?)
+            switch(DialogueManager.istance.language)
+            {
+                case DialogueManager.idiom.pt:
+                    sentences.Add(dialogue.dialogues[i].sentece.portuguese);  //Adiciona uma nova sentença ao Arrey de falas(?)
+                    break;
+
+                case DialogueManager.idiom.eng:
+                    sentences.Add(dialogue.dialogues[i].sentece.english);  //Adiciona uma nova sentença ao Arrey de falas(?)
+                    break;
+            }
         }
     }
 
@@ -55,7 +64,7 @@ public class NPC_Dialogue : MonoBehaviour
         else
         {
             playerHit = false;
-            DialogueManager.istance.dialogueObj.SetActive(false);
+            //DialogueManager.istance.dialogueObj.SetActive(false);
         }
     }
 
