@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;  //trabalha com Canvas
 
@@ -8,8 +9,8 @@ public class DialogueManager : MonoBehaviour  //Classe responsável por pegar as
     [Header("Components")]
     public GameObject dialogueObj;  //Janela do diálogo
     public Image profileSprite;  //Referencia a imagem de perfil do personagem que está falando
-    public Text speechText;  //Referencia o texto da fala
-    public Text actorNameText;  //Referencia o nome do personagem que está falando
+    public TMP_Text speechText;  //Referencia o texto da fala
+    public TMP_Text actorNameText;  //Referencia o nome do personagem que está falando
 
     [Header("Settings")]
     public float typingSpeed;  //Referencia a velocidade da fala
@@ -20,6 +21,13 @@ public class DialogueManager : MonoBehaviour  //Classe responsável por pegar as
     private bool isShowing;  //Referencia se a janela está visível
     private int index;  //Referencia a quantidade de texto de uma fala
     private string[] senteces;
+
+    public static DialogueManager istance;
+
+    private void Awake()  //Awake é chamada antes de todos os Start() na hierarquia de execução de scrripts
+    {
+        istance = this;
+    }
 
     #endregion
 
@@ -47,7 +55,22 @@ public class DialogueManager : MonoBehaviour  //Classe responsável por pegar as
 
     public void NextSentece()  //Sereve para pular para a próxima fala
     {
-
+        if(speechText.text == senteces[index])  //Verifica se a frase que está sendo falada foi escrita por completa
+        {
+            if(index < senteces.Length - 1)  //enquanto ainda tem texto para ser lido
+            {
+                index++;
+                speechText.text = "";  //limpa o campo de texto para a próxima fala
+                StartCoroutine(TypeSentence());
+            }
+            else  //quando termina os textos
+            {
+                speechText.text = "";
+                index = 0;
+                dialogueObj.SetActive(false);
+                senteces = null;
+            }
+        }
     }
 
     public void Speech(string[] txt)  //Chama a fala do NPC
