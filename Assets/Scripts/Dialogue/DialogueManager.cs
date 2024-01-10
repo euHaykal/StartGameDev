@@ -29,11 +29,12 @@ public class DialogueManager : MonoBehaviour  //Classe responsável por pegar as
 
     #region Variáveis de Controle
 
-    private bool isShowing;  //Referencia se a janela está visível
+    [HideInInspector] public bool isShowing;  //Referencia se a janela está visível
     private int index;  //Referencia a quantidade de texto de uma fala
     private string[] senteces;
 
     public static DialogueManager istance;
+
 
     private void Awake()  //Awake é chamada antes de todos os Start() na hierarquia de execução de scrripts
     {
