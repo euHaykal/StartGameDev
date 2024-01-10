@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private float initialSpeed;  //set a velocidade inicial do player
     private bool _isRunning;  //determina se o personagem está correndo
     private bool _isRolling;  //determina se o personagem está esquivando
+    private bool _isCutting;  //determina se o personagem está cortando a árvore
     private Vector2 _direction; //direção que o personagem está se movendo
 
     public Vector2 direction //para deixar a variável pública para acesso em outros códigos
@@ -35,6 +36,12 @@ public class Player : MonoBehaviour
         set { _isRolling = value; }
     }
 
+    public bool isCutting
+    {
+        get { return _isCutting; }
+        set { _isCutting = value; }
+    }
+
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();  //quando o jogo começa, a função pega dentro do objeto seu Rigidbody para poder aplicar física
@@ -47,6 +54,7 @@ public class Player : MonoBehaviour
 
         OnRun();
         OnRoll();
+        OnCut();
     }
 
     private void FixedUpdate() //trabalha com físicas
@@ -94,6 +102,21 @@ public class Player : MonoBehaviour
         {
             speed = initialSpeed;
             _isRolling = false;
+        }
+    }
+
+    void OnCut()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            isCutting = true;
+            speed = 0f;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            isCutting = false;
+            speed = initialSpeed;
         }
     }
 
