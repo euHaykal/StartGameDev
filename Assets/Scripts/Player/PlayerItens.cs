@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerItens : MonoBehaviour
 {
-    [SerializeField] private int totalWood;
+    [SerializeField] private int totalWood;  //Referencia a quantidade de madeiras coletadas pelo jogador
 
-    public int TotalWood
+    public int TotalWood  //Encapsulamento para permitir que a variável totalWood seja acessada por outros scripts
     {
         get { return totalWood; }
         set { totalWood = value; }
