@@ -52066,18 +52066,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 688763798939739343, guid: aa4393a0607735644aee1847fdf99514, type: 3}
-      propertyPath: totalWood
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 688763798939739343, guid: aa4393a0607735644aee1847fdf99514, type: 3}
-      propertyPath: treeHealth
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 688763798939739343, guid: aa4393a0607735644aee1847fdf99514, type: 3}
-      propertyPath: woodPrefab
-      value: 
-      objectReference: {fileID: 1031998398627969082, guid: 02d678464ea29b341b217a0375be06ea, type: 3}
     - target: {fileID: 2329514817937456511, guid: aa4393a0607735644aee1847fdf99514, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.52

@@ -11,12 +11,15 @@ public class Tree : MonoBehaviour
      [SerializeField] private GameObject woodPrefab;
      [SerializeField] private int totalWood;
 
+     [SerializeField] private ParticleSystem leafs;  //Referencia o sistema de partícula das folhas
+
 
     public void OnHit()
     {
         treeHealth--;
 
         anim.SetTrigger("isHit");
+        leafs.Play();  //Aciona o sistema de Partículas quando o player hita a árvore
 
         if(treeHealth <= 0)
         {
