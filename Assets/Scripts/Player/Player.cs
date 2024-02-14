@@ -16,7 +16,10 @@ public class Player : MonoBehaviour
     private bool _isRunning;  //determina se o personagem está correndo
     private bool _isRolling;  //determina se o personagem está esquivando
     private bool _isCutting;  //determina se o personagem está cortando a árvore
+    private bool _isDigging;  //determina se o personagem está cavando
     private Vector2 _direction; //direção que o personagem está se movendo
+
+    private int handlingObj;  //determina qual o objeto o jogador tem em mãos - começa com o valor de 0, logo, o jogador começa sem objetos em mãos
 
     public Vector2 direction //para deixar a variável pública para acesso em outros códigos
     {
@@ -42,6 +45,13 @@ public class Player : MonoBehaviour
         set { _isCutting = value; }
     }
 
+
+    public bool isDigging
+    {
+        get { return _isDigging; }
+        set { _isDigging = value; }
+    }
+
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();  //quando o jogo começa, a função pega dentro do objeto seu Rigidbody para poder aplicar física
@@ -49,12 +59,24 @@ public class Player : MonoBehaviour
     }
 
     private void Update() //inputos e/ou lógicas sem física
-    {
+    {   
+        if(Input.GetKeyDown(KeyCode.Alpha1))  //se o jogador clicar no número 1, determinando objeito fica em mãos
+        {
+            handlingObj = 0;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha2))  //se o jogador clicar no número 2, determinando objeito fica em mãos
+        {
+            handlingObj = 1;
+        }
+
+
         OnInput();
 
         OnRun();
         OnRoll();
         OnCut();
+        OnDig();
     }
 
     private void FixedUpdate() //trabalha com físicas
@@ -107,16 +129,37 @@ public class Player : MonoBehaviour
 
     void OnCut()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(handlingObj == 0)  //se o objeto em mãos for o primeiro, ação de cortar fica liberada
         {
-            isCutting = true;
-            speed = 0f;
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                isCutting = true;
+                speed = 0f;
+            }
 
-        if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0))
+            {
+                isCutting = false;
+                speed = initialSpeed;
+            }
+        }
+    }
+
+    void OnDig()
+    {
+        if(handlingObj == 1)  //se o objeto em mãos for o segundo, ação de cavar fica liberada
         {
-            isCutting = false;
-            speed = initialSpeed;
+            if (Input.GetMouseButtonDown(0))
+            {
+                isDigging = true;
+                speed = 0f;
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                isDigging = false;
+                speed = initialSpeed;
+            }
         }
     }
 
