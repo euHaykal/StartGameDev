@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerItens : MonoBehaviour
 {
     [SerializeField] private int totalWood;  //Referencia a quantidade de madeiras coletadas pelo jogador
+    [SerializeField] private int currentWater;
+    private int waterLimit = 50;
 
     public int TotalWood  //Encapsulamento para permitir que a variável totalWood seja acessada por outros scripts
     {
@@ -12,15 +14,18 @@ public class PlayerItens : MonoBehaviour
         set { totalWood = value; }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public int TotalWater  //Encapsulamento para permitir que a variável totalWood seja acessada por outros scripts
     {
-        
+        get { return currentWater; }
+        set { currentWater = value; }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void WaterLimit(int water)
     {
+        if(currentWater < waterLimit)
+        {
+            currentWater += water;
+        }
         
     }
 }

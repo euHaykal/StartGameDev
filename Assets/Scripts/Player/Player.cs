@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private bool _isRolling;  //determina se o personagem está esquivando
     private bool _isCutting;  //determina se o personagem está cortando a árvore
     private bool _isDigging;  //determina se o personagem está cavando
+    private bool _isWatering;
     private Vector2 _direction; //direção que o personagem está se movendo
 
     private int handlingObj;  //determina qual o objeto o jogador tem em mãos - começa com o valor de 0, logo, o jogador começa sem objetos em mãos
@@ -45,12 +46,19 @@ public class Player : MonoBehaviour
         set { _isCutting = value; }
     }
 
-
     public bool isDigging
     {
         get { return _isDigging; }
         set { _isDigging = value; }
     }
+
+    
+    public bool isWatering
+    {
+        get { return _isWatering; }
+        set { _isWatering = value; }
+    }
+
 
     private void Start()
     {
